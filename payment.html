@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - The Kraft Magic</title>
+    <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="payment.css">
+   
+</head>
+<body>
+    <header>
+        <div class="main-box">
+            <div class="box1"></div>
+            <div class="center-logo">
+                <div class="logo-circle"></div>
+            </div>
+            <div class="main">
+                <div class="bg-box"></div>
+                <nav style="background-color:none;"></nav>
+                <div class="panel">
+                    <div class="account">
+                      
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Sign up </button>
+                        </div>
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Log in </button>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="heading"> The Kraft Magic </h1>
+                <div class="tagline"> &#183; Shaping what you dreamt of &#183;</div>
+            </div>
+        </div>
+        <div class="bg-info">
+            <div class="info">
+                <h3 class="info-boxes" onclick="window.location.href='index.html'"> Home </h3>
+                <h3 class="info-boxes"> About </h3>
+                <h3 class="info-boxes"> Contact Us</h3>
+                <div class="acc" onclick="window.location.href='cart.html'">
+                    <button id="cart-btn"> My Cart (<span id="header-cart-count">0</span>) </button>
+                </div>
+            </div>
+        </div>
+        <div class="line-vertical"></div>
+    </header>
+
+    <div class="payment-container">
+        <div class="checkout-steps">
+            <div class="step completed">
+                <span>1</span>
+                <span>Cart</span>
+            </div>
+            <div class="step completed">
+                <span>2</span>
+                <span>Address</span>
+            </div>
+            <div class="step active">
+                <span>3</span>
+                <span>Payment</span>
+            </div>
+            <div class="step pending">
+                <span>4</span>
+                <span>Confirmation</span>
+            </div>
+        </div>
+
+        <div class="security-note">
+            <i>🔒</i>
+            Your payment information is secure and encrypted. We never store your card details.
+        </div>
+
+        <div class="payment-methods">
+            <h2>Select Payment Method</h2>
+            
+            <div class="payment-method" onclick="selectPaymentMethod('card')">
+                <input type="radio" name="paymentMethod" value="card" id="card-payment">
+                <div class="payment-method-title">💳 Credit/Debit Card</div>
+                <div class="payment-method-desc">Pay securely with your credit or debit card</div>
+            </div>
+            
+            <div class="payment-method" onclick="selectPaymentMethod('upi')">
+                <input type="radio" name="paymentMethod" value="upi" id="upi-payment">
+                <div class="payment-method-title">📱 UPI Payment</div>
+                <div class="payment-method-desc">Pay instantly using UPI (Google Pay, PhonePe, Paytm, etc.)</div>
+            </div>
+            
+            <div class="payment-method" onclick="selectPaymentMethod('cod')">
+                <input type="radio" name="paymentMethod" value="cod" id="cod-payment">
+                <div class="payment-method-title">💰 Cash on Delivery</div>
+                <div class="payment-method-desc">Pay when your order is delivered (₹25 extra charge)</div>
+            </div>
+        </div>
+
+        <div id="card-form" class="card-form">
+            <h3>Card Details</h3>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number <span class="required">*</span></label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cardName">Cardholder Name <span class="required">*</span></label>
+                    <input type="text" id="cardName" name="cardName" placeholder="Name as on card" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryMonth">Expiry Month <span class="required">*</span></label>
+                        <select id="expiryMonth" name="expiryMonth" required>
+                            <option value="">Month</option>
+                            <option value="01">01 - January</option>
+                            <option value="02">02 - February</option>
+                            <option value="03">03 - March</option>
+                            <option value="04">04 - April</option>
+                            <option value="05">05 - May</option>
+                            <option value="06">06 - June</option>
+                            <option value="07">07 - July</option>
+                            <option value="08">08 - August</option>
+                            <option value="09">09 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expiryYear">Expiry Year <span class="required">*</span></label>
+                        <select id="expiryYear" name="expiryYear" required>
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cvv">CVV <span class="required">*</span></label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="upi-form" class="card-form">
+            <h3>UPI Payment</h3>
+            <div class="form-group">
+                <label for="upiId">UPI ID <span class="required">*</span></label>
+                <input type="text" id="upiId" name="upiId" placeholder="yourname@paytm" required>
+            </div>
+            <p style="color: #666; font-size: 14px;">You will be redirected to your UPI app to complete the payment.</p>
+        </div>
+
+        <div id="cod-form" class="card-form">
+            <h3>Cash on Delivery</h3>
+            <p style="color: #666;">You will pay ₹<span id="cod-total">0</span> (including ₹25 COD charges) when your order is delivered.</p>
+            <p style="color: #666; font-size: 14px;">Please keep exact change ready for faster delivery.</p>
+        </div>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+                <span>Subtotal:</span>
+                <span id="summary-subtotal">₹0</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping:</span>
+                <span id="summary-shipping">₹0</span>
+            </div>
+            <div class="summary-item">
+                <span>Tax:</span>
+                <span id="summary-tax">₹0</span>
+            </div>
+            <div class="summary-item" id="cod-charges" style="display: none;">
+                <span>COD Charges:</span>
+                <span>₹25</span>
+            </div>
+            <div class="summary-item summary-total">
+                <span>Total:</span>
+                <span id="summary-total">₹0</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-back" onclick="window.location.href='address.html'">← Back to Address</button>
+            <button class="btn btn-pay" onclick="processPayment()" id="pay-button">Complete Payment</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        let selectedPaymentMethod = '';
+        let originalTotal = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Protect payment page - require authentication
+            if (!isLoggedIn()) {
+                alert('Please log in to continue checkout');
+                window.location.href = 'account.html';
+                return;
+            }
+            
+            const totals = JSON.parse(localStorage.getItem('orderTotals')) || {};
+            originalTotal = totals.grandTotal || 0;
+            
+            document.getElementById('summary-subtotal').textContent = `₹${totals.subtotal || 0}`;
+            document.getElementById('summary-shipping').textContent = `₹${totals.shipping || 0}`;
+            document.getElementById('summary-tax').textContent = `₹${totals.tax || 0}`;
+            document.getElementById('summary-total').textContent = `₹${originalTotal}`;
+            document.getElementById('cod-total').textContent = originalTotal + 25;
+            
+            updateHeaderCartCount();
+            populateYears();
+            formatCardNumber();
+        });
+
+        function populateYears() {
+            const yearSelect = document.getElementById('expiryYear');
+            const currentYear = new Date().getFullYear();
+            for (let i = 0; i < 10; i++) {
+                const year = currentYear + i;
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        function formatCardNumber() {
+            const cardInput = document.getElementById('cardNumber');
+            cardInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+            });
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Update radio buttons
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.checked = radio.value === method;
+            });
+            
+            // Update visual selection
+            document.querySelectorAll('.payment-method').forEach(pm => {
+                pm.classList.remove('selected');
+            });
+            document.querySelector(`#${method}-payment`).closest('.payment-method').classList.add('selected');
+            
+            // Show/hide forms
+            document.querySelectorAll('.card-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(`${method}-form`).classList.add('active');
+            
+            // Update total for COD
+            if (method === 'cod') {
+                document.getElementById('cod-charges').style.display = 'flex';
+                document.getElementById('summary-total').textContent = `₹${originalTotal + 25}`;
+                document.getElementById('pay-button').textContent = 'Place Order';
+            } else {
+                document.getElementById('cod-charges').style.display = 'none';
+                document.getElementById('summary-total').textContent = `₹${originalTotal}`;
+                document.getElementById('pay-button').textContent = 'Complete Payment';
+            }
+        }
+
+        function processPayment() {
+            if (!selectedPaymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+
+            let isValid = true;
+            
+            if (selectedPaymentMethod === 'card') {
+                const form = document.getElementById('payment-form');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+            } else if (selectedPaymentMethod === 'upi') {
+                const upiId = document.getElementById('upiId').value;
+                if (!upiId) {
+                    alert('Please enter your UPI ID');
+                    return;
+                }
+            }
+
+            // Save payment method
+            localStorage.setItem('paymentMethod', selectedPaymentMethod);
+            
+            // Simulate payment processing
+            const payButton = document.getElementById('pay-button');
+            payButton.textContent = 'Processing...';
+            payButton.disabled = true;
+            
+            setTimeout(() => {
+                window.location.href = 'confirmation.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - The Kraft Magic</title>
+    <link rel="stylesheet" href="main.css">
+   <link rel="stylesheet" href="confirmation.css">
+</head>
+<body>
+    <header>
+        <div class="main-box">
+            <div class="box1"></div>
+            <div class="center-logo">
+                <div class="logo-circle"></div>
+            </div>
+            <div class="main">
+                <div class="bg-box"></div>
+                <nav style="background-color:none;"></nav>
+                <div class="panel">
+                    <div class="account">
+                       
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Sign up </button>
+                        </div>
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Log in </button>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="heading"> The Kraft Magic </h1>
+                <div class="tagline"> &#183; Shaping what you dreamt of &#183;</div>
+            </div>
+        </div>
+        <div class="bg-info">
+            <div class="info">
+                <h3 class="info-boxes" onclick="window.location.href='index.html'"> Home </h3>
+                <h3 class="info-boxes"> About </h3>
+                <h3 class="info-boxes"> Contact Us</h3>
+                <div class="acc" onclick="window.location.href='cart.html'">
+                    <button id="cart-btn"> My Cart (<span id="header-cart-count">0</span>) </button>
+                </div>
+            </div>
+        </div>
+        <div class="line-vertical"></div>
+    </header>
+
+    <div class="confirmation-container">
+        <div class="checkout-steps">
+            <div class="step completed">
+                <span>1</span>
+                <span>Cart</span>
+            </div>
+            <div class="step completed">
+                <span>2</span>
+                <span>Address</span>
+            </div>
+            <div class="step completed">
+                <span>3</span>
+                <span>Payment</span>
+            </div>
+            <div class="step completed">
+                <span>4</span>
+                <span>Confirmation</span>
+            </div>
+        </div>
+
+        <div class="success-icon">✅</div>
+        <h1 class="confirmation-title">Order Confirmed!</h1>
+        <p class="confirmation-subtitle">Thank you for your purchase. Your order has been successfully placed.</p>
+
+        <div class="order-details">
+            <div class="order-header">
+                <div class="order-number">Order #<span id="order-number"></span></div>
+                <div class="order-date" id="order-date"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📦 Order Items</div>
+                <div class="order-items" id="order-items">
+                    <!-- Items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🚚 Shipping Address</div>
+                <div class="section-content" id="shipping-address">
+                    <!-- Address will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💳 Payment Method</div>
+                <div class="section-content" id="payment-method">
+                    <!-- Payment method will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="total-summary">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="final-subtotal">₹0</span>
+            </div>
+            <div class="total-row">
+                <span>Shipping:</span>
+                <span id="final-shipping">₹0</span>
+            </div>
+            <div class="total-row">
+                <span>Tax:</span>
+                <span id="final-tax">₹0</span>
+            </div>
+            <div class="total-row" id="final-cod-charges" style="display: none;">
+                <span>COD Charges:</span>
+                <span>₹25</span>
+            </div>
+            <div class="total-row grand-total">
+                <span>Grand Total:</span>
+                <span id="final-total">₹0</span>
+            </div>
+        </div>
+
+        <div class="delivery-info">
+            <h4>📅 Estimated Delivery</h4>
+            <p>Your order will be delivered within <strong>3-5 business days</strong>.</p>
+            <p>We'll send you tracking information once your order ships.</p>
+        </div>
+
+        <div class="tracking-info">
+            <h4>📧 What's Next?</h4>
+            <p>• You'll receive an order confirmation email shortly</p>
+            <p>• We'll notify you when your order ships</p>
+            <p>• Track your order status anytime with your order number</p>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="clearCartAndContinueShopping()">Continue Shopping</button>
+            <button class="btn btn-secondary" onclick="window.print()">Print Receipt</button>
+        </div>
+    </div>
+
+    <!-- EmailJS Library -->
+    <script src="script.js"></script>
+    <script src="email-service.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            generateOrderNumber();
+            displayOrderDate();
+            displayOrderItems();
+            displayShippingAddress();
+            displayPaymentMethod();
+            displayOrderTotals();
+            
+            // Send order confirmation email
+            sendOrderNotificationEmail();
+            
+            clearCartAfterOrder();
+        });
+
+        function generateOrderNumber() {
+            const orderNumber = 'KM' + Date.now().toString().slice(-8);
+            document.getElementById('order-number').textContent = orderNumber;
+            localStorage.setItem('lastOrderNumber', orderNumber);
+        }
+
+        function displayOrderDate() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('order-date').textContent = now.toLocaleDateString('en-IN', options);
+        }
+
+        function displayOrderItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderItemsContainer = document.getElementById('order-items');
+            
+            cart.forEach(item => {
+                const itemRow = document.createElement('div');
+                itemRow.className = 'item-row';
+                itemRow.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-specs">Size: ${item.size} | Quantity: ${item.quantity}</div>
+                    </div>
+                    <div class="item-price">₹${item.price * item.quantity}</div>
+                `;
+                orderItemsContainer.appendChild(itemRow);
+            });
+        }
+
+        function displayShippingAddress() {
+            const address = JSON.parse(localStorage.getItem('shippingAddress')) || {};
+            const addressContainer = document.getElementById('shipping-address');
+            
+            addressContainer.innerHTML = `
+                <strong>${address.fullName || 'N/A'}</strong><br>
+                ${address.address1 || ''}<br>
+                ${address.address2 ? address.address2 + '<br>' : ''}
+                ${address.city || ''}, ${address.state || ''} ${address.pincode || ''}<br>
+                Phone: ${address.phone || 'N/A'}<br>
+                Email: ${address.email || 'N/A'}
+                ${address.specialInstructions ? '<br><br><em>Special Instructions: ' + address.specialInstructions + '</em>' : ''}
+            `;
+        }
+
+        function displayPaymentMethod() {
+            const paymentMethod = localStorage.getItem('paymentMethod') || 'Not specified';
+            const paymentContainer = document.getElementById('payment-method');
+            
+            let paymentText = '';
+            switch(paymentMethod) {
+                case 'card':
+                    paymentText = '💳 Credit/Debit Card';
+                    break;
+                case 'upi':
+                    paymentText = '📱 UPI Payment';
+                    break;
+                case 'cod':
+                    paymentText = '💰 Cash on Delivery';
+                    break;
+                default:
+                    paymentText = 'Not specified';
+            }
+            
+            paymentContainer.textContent = paymentText;
+        }
+
+        function displayOrderTotals() {
+            const totals = JSON.parse(localStorage.getItem('orderTotals')) || {};
+            const paymentMethod = localStorage.getItem('paymentMethod');
+            
+            document.getElementById('final-subtotal').textContent = `₹${totals.subtotal || 0}`;
+            document.getElementById('final-shipping').textContent = `₹${totals.shipping || 0}`;
+            document.getElementById('final-tax').textContent = `₹${totals.tax || 0}`;
+            
+            let finalTotal = totals.grandTotal || 0;
+            
+            if (paymentMethod === 'cod') {
+                document.getElementById('final-cod-charges').style.display = 'flex';
+                finalTotal += 25;
+            }
+            
+            document.getElementById('final-total').textContent = `₹${finalTotal}`;
+        }
+
+        function clearCartAfterOrder() {
+            // Clear cart and related data after successful order
+            localStorage.removeItem('cart');
+            localStorage.removeItem('orderTotals');
+            localStorage.removeItem('shippingAddress');
+            localStorage.removeItem('paymentMethod');
+            
+            // Update cart count
+            updateHeaderCartCount();
+        }
+
+        async function sendOrderNotificationEmail() {
+            try {
+                // Get all order data
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totals = JSON.parse(localStorage.getItem('orderTotals')) || {};
+                const address = JSON.parse(localStorage.getItem('shippingAddress')) || {};
+                const paymentMethod = localStorage.getItem('paymentMethod') || 'Not specified';
+                const user = getCurrentUser();
+                const orderNumber = localStorage.getItem('lastOrderNumber') || 'Unknown';
+                
+                // Prepare order data for email
+                const orderData = {
+                    orderNumber: orderNumber,
+                    customerName: user ? user.name : address.fullName || 'Unknown',
+                    customerEmail: user ? user.email : address.email || 'Unknown',
+                    orderDate: new Date().toLocaleString('en-IN'),
+                    items: cart,
+                    totals: {
+                        subtotal: totals.subtotal || 0,
+                        shipping: totals.shipping || 0,
+                        tax: totals.tax || 0,
+                        grandTotal: totals.grandTotal || 0
+                    },
+                    shippingAddress: address,
+                    paymentMethod: getPaymentMethodText(paymentMethod)
+                };
+                
+                // Add COD charges if applicable
+                if (paymentMethod === 'cod') {
+                    orderData.totals.grandTotal += 25;
+                }
+                
+                // Send email notification
+                console.log('Sending order confirmation email...');
+                const result = await handleOrderConfirmationEmail(orderData);
+                
+                if (result.success) {
+                    console.log('Order confirmation email sent successfully');
+                    alert('Order confirmation email sent successfully to ' + orderData.customerEmail);
+                } else {
+                    console.log('Email service not configured, using fallback method');
+                    alert('Order confirmed! Email notification may have failed, but your order is processed.');
+                }
+            } catch (error) {
+                console.error('Error sending order notification:', error);
+            }
+        }
+        
+        function getPaymentMethodText(method) {
+            switch(method) {
+                case 'card': return 'Credit/Debit Card';
+                case 'upi': return 'UPI Payment';
+                case 'cod': return 'Cash on Delivery';
+                default: return 'Not specified';
+            }
+        }
+        
+        function clearCartAndContinueShopping() {
+            // Clear all cart-related data from localStorage
+            localStorage.removeItem('cart');
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('cartCount');
+            
+            // Update header cart count to reflect empty cart
+            updateHeaderCartCount();
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "Sa7zOQZVHDuADGdUI",
+      });
+   })();
+</script>
+
+</body>
+</html>

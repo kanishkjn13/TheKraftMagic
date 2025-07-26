@@ -1,0 +1,175 @@
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color:beige;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .about-title {
+            font-size: 48px;
+            color:#847f61;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .about-subtitle {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .story-text {
+            padding: 20px;
+        }
+        
+        .story-text h2 {
+            font-size: 32px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .story-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .story-image {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .story-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .values-section {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+        }
+        
+        .values-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .team-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-title {
+            font-size: 36px;
+            color: #847f61;
+            margin-bottom: 30px;
+        }
+        
+        .team-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        .stats-section {
+            background: beige;
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: #847f61;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .about-title {
+                font-size: 36px;
+            }
+            
+            .values-section {
+                padding: 30px 20px;
+            }
+        }

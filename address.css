@@ -1,0 +1,151 @@
+    .address-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: beige;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 2px solid rgb(195, 195, 176);
+            margin-top: 20px;
+        }
+        
+        .checkout-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .step.active {
+            background: #28a745;
+            color: white;
+        }
+        
+        .step.completed {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .step.pending {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h2 {
+            color: #847f61;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #847f61;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #847f61;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgb(169, 169, 151);
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: rgb(235, 235, 212);
+            color: #847f61;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #5c5944;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .order-summary {
+            background: #c4bc90;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: beige;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-total {
+            font-weight: bold;
+            font-size: 18px;
+            color: beige;
+            border-top: 2px solid beige;
+            padding-top: 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-back:hover {
+            background: #5a6268;
+        }
+        
+        .btn-continue {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-continue:hover {
+            background: #218838;
+        }
+        
+        .required {
+            color: #dc3545;
+        }

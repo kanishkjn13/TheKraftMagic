@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - The Kraft Magic</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <div class="main-box">
+            <div class="box1"></div>
+            <div class="center-logo">
+                <div class="logo-circle"></div>
+            </div>
+            <div class="main">
+                <div class="bg-box"></div>
+                <nav style="background-color:none;"></nav>
+                <div class="panel">
+                    <div class="account">
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Sign up </button>
+                        </div>
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Log in </button>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="heading"> The Kraft Magic </h1>
+                <div class="tagline"> &#183; Shaping what you dreamt of &#183;</div>
+            </div>
+        </div>
+        <div class="bg-info">
+            <div class="info">
+                <h3 class="info-boxes" onclick="window.location.href='index.html'">Home </h3>
+                <h3 class="info-boxes" onclick="window.location.href='about.html'"> About </h3>
+                <h3 class="info-boxes" onclick="window.location.href='contact.html'">Contact Us</h3>
+                <div class="acc" onclick="window.location.href='cart.html'">
+                    <button id="cart-btn">My Cart (<span id="header-cart-count">0</span>) </button>
+                </div>
+            </div>
+        </div>
+        <div class="line-vertical"></div>
+    </header>
+
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1>Your Shopping Cart</h1>
+        </div>
+
+        <div id="cart-content">
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be populated by JavaScript -->
+            </div>
+
+            <div id="empty-cart" class="empty-cart" style="display: none;">
+                <h2>Your cart is empty</h2>
+                <p>Add some beautiful items to your cart to get started!</p>
+                <a href="index.html" class="checkout-btn" style="display: inline-block; width: auto; padding: 10px 20px;">Continue Shopping</a>
+            </div>
+
+            <div id="cart-summary" class="cart-summary" style="display: none;">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="shipping">₹50</span>
+                </div>
+                <div class="total-row">
+                    <span>Tax:</span>
+                    <span id="tax">₹0</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Grand Total:</span>
+                    <span id="grand-total">₹0</span>
+                </div>
+                <button class="checkout-btn" onclick="proceedToAddress()">Proceed to Address</button>
+            </div>
+        </div>
+
+        <div class="continue-shopping">
+            <a href="index.html">← Continue Shopping</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Protect cart page - require authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isLoggedIn()) {
+                alert('Please log in to access your cart');
+                window.location.href = 'account.html';
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+     .contact-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 40px 20px;
+         background: beige;
+         border-radius: 15px;
+         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+         margin-top: 30px;
+     }
+
+     .contact-header {
+         text-align: center;
+         margin-bottom: 50px;
+     }
+
+     .contact-title {
+         font-size: 48px;
+         color: #847f61;
+         margin-bottom: 20px;
+         font-weight: bold;
+     }
+
+     .contact-subtitle {
+         font-size: 20px;
+         color: #666;
+         max-width: 600px;
+         margin: 0 auto;
+         line-height: 1.6;
+     }
+
+     .contact-content {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 60px;
+         margin-bottom: 60px;
+     }
+
+     .contact-form {
+         background:#847f61;
+         padding: 40px;
+         border-radius: 15px;
+     }
+
+     .contact-form h2 {
+         font-size: 28px;
+         color: beige;
+         margin-bottom: 30px;
+         text-align: center;
+     }
+
+     .form-group {
+         margin-bottom: 25px;
+     }
+
+     .form-group label {
+         display: block;
+         margin-bottom: 8px;
+         font-weight: bold;
+         color: #333;
+         font-size: 16px;
+     }
+
+     .form-group input,
+     .form-group textarea,
+     .form-group select {
+        background-color: beige;
+         width: 100%;
+         padding: 15px;
+         border: 2px solid beige;
+         border-radius: 8px;
+         font-size: 16px;
+         box-sizing: border-box;
+         transition: border-color 0.3s ease;
+     }
+
+     .form-group input:focus,
+     .form-group textarea:focus,
+     .form-group select:focus {
+         outline: none;
+         border-color: beige;
+     }
+
+     .form-group textarea {
+         resize: vertical;
+         min-height: 120px;
+     }
+
+     .submit-btn {
+         width: 100%;
+         background-color: beige;
+         color: #847f61;
+         border: none;
+         padding: 15px;
+         font-size: 18px;
+         font-weight: bold;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: transform 0.3s ease;
+         border: 3px solid #585541;
+         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+     }
+
+     .submit-btn:hover {
+         transform: translateY(-2px);
+     }
+
+     .contact-info {
+         padding: 20px;
+     }
+
+     .contact-info h2 {
+         font-size: 28px;
+         color: beige;
+         margin-bottom: 30px;
+     }
+
+     .info-card {
+         background:#847f61;
+         padding: 25px;
+         border-radius: 12px;
+         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+         margin-bottom: 25px;
+         border-left: 4px solid #585541;
+     }
+
+     .info-card-header {
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+     }
+
+     .info-icon {
+         font-size: 24px;
+         margin-right: 15px;
+         color: #847f61
+     }
+
+     .info-card h3 {
+         font-size: 20px;
+         color: beige;
+         margin: 0;
+     }
+
+     .info-card p {
+         font-size: 16px;
+         color: beige;
+         line-height: 1.6;
+         margin: 0;
+     }
+
+     .info-card a {
+         color:beige;
+         text-decoration: none;
+     }
+
+     .info-card a:hover {
+         text-decoration: underline;
+     }
+
+     .business-hours {
+         background: linear-gradient(135deg, #ff6b6b, #ffa500);
+         color: white;
+         padding: 40px;
+         border-radius: 15px;
+         text-align: center;
+         margin-bottom: 40px;
+     }
+
+     .business-hours h2 {
+         font-size: 28px;
+         margin-bottom: 30px;
+     }
+
+     .hours-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+     }
+
+     .hours-item {
+         background: rgba(255, 255, 255, 0.1);
+         padding: 20px;
+         border-radius: 10px;
+         backdrop-filter: blur(10px);
+     }
+
+     .hours-day {
+         font-weight: bold;
+         font-size: 16px;
+         margin-bottom: 5px;
+     }
+
+     .hours-time {
+         font-size: 14px;
+         opacity: 0.9;
+     }
+
+     .faq-section {
+         background: beige;
+         padding: 40px;
+         border-radius: 15px;
+     }
+
+     .faq-title {
+         font-size: 28px;
+         color: #847f61;
+         text-align: center;
+         margin-bottom: 30px;
+     }
+
+     .faq-item {
+         background: beige;
+         margin-bottom: 15px;
+         border-radius: 8px;
+         overflow: hidden;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     }
+
+     .faq-question {
+         background: #ff6b6b;
+         color: white;
+         padding: 20px;
+         cursor: pointer;
+         font-weight: bold;
+         user-select: none;
+     }
+
+     .faq-answer {
+         padding: 20px;
+         color: #666;
+         line-height: 1.6;
+         display: none;
+     }
+
+     .faq-answer.active {
+         display: block;
+     }
+
+     @media (max-width: 768px) {
+         .contact-content {
+             grid-template-columns: 1fr;
+             gap: 40px;
+         }
+
+         .contact-title {
+             font-size: 36px;
+         }
+
+         .contact-form {
+             padding: 25px;
+         }
+
+         .business-hours {
+             padding: 25px;
+         }
+     }
