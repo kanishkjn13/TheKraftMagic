@@ -148,6 +148,11 @@
                 <input type="text" id="upiId" name="upiId" placeholder="yourname@paytm" required>
             </div>
             <p style="color: #666; font-size: 14px;">You will be redirected to your UPI app to complete the payment.</p>
+            <div id="upi-qr-section">
+                <p style="font-size: 15px; color: #333;">Or scan this QR code to pay the exact subtotal:</p>
+                <div id="upi-qr-code"></div>
+                <div id="upi-qr-amount" style="margin-top: 8px; color: #4a90e2;"></div>
+            </div>
         </div>
 
         <div id="cod-form" class="card-form">
@@ -188,6 +193,7 @@
 
     <script src="script.js"></script>
     <script src="cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
         let selectedPaymentMethod = '';
         let originalTotal = 0;
@@ -254,6 +260,35 @@
                 form.classList.remove('active');
             });
             document.getElementById(`${method}-form`).classList.add('active');
+
+            // Show QR code for UPI
+            if (method === 'upi') {
+                const upiSection = document.getElementById('upi-qr-section');
+                const qrDiv = document.getElementById('upi-qr-code');
+                const qrAmount = document.getElementById('upi-qr-amount');
+                // Get total (grand total) from orderTotals in localStorage
+                const orderTotals = JSON.parse(localStorage.getItem('orderTotals')) || {};
+                const total = orderTotals.grandTotal || 0;
+                // UPI QR code details
+                const payeeVPA = 'yourupi@bank'; // TODO: Replace with your UPI ID
+                const payeeName = 'The Craft Magic';
+                const upiUrl = `upi://pay?pa=${encodeURIComponent(payeeVPA)}&pn=${encodeURIComponent(payeeName)}&am=${total}&cu=INR`;
+                // Clear previous QR
+                qrDiv.innerHTML = '';
+                if (total > 0) {
+                    upiSection.style.display = 'flex';
+                    qrAmount.textContent = `Amount: ₹${total}`;
+                    new QRCode(qrDiv, {
+                        text: upiUrl,
+                        width: 180,
+                        height: 180
+                    });
+                } else {
+                    upiSection.style.display = 'none';
+                }
+            } else {
+                document.getElementById('upi-qr-section').style.display = 'none';
+            }
             
             // Update total for COD
             if (method === 'cod') {

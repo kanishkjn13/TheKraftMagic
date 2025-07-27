@@ -14,11 +14,10 @@
     <header>
         <div class="main-box">
             <div class="box1"></div>
-            <div class="center-logo">
-                <div class="logo-circle"></div>
-            </div>
-
             <div class="main">
+                <div class="center-logo">
+                    <div class="logo-circle"></div>
+                </div>
                 <div class="bg-box"></div>
                 <nav style="background-color:none;"></nav>
                 <div class="panel">
@@ -59,10 +58,10 @@
         <!-- Hairclips Section -->
         <section class="hairclips-section">
             <div class="subheading">
-                <div class="name">
+                <div class="name" id="hairclip-name">
                     <h1> Hairclips</h1>
                 </div>
-                <div class="line"></div>
+                <div class="line" id="hairclip-line"></div>
                 <div class="big-line">About the product</div>
             </div>
             <div class="clips">
@@ -198,10 +197,10 @@
         <!-- Cables Section -->
         <section class="cables-section">
             <div class="subheading">
-                <div class="name">
+                <div class="name" id="cable-name">
                     <h1>Cables</h1>
                 </div>
-                <div class="line"></div>
+                <div class="line" id="cable-line"></div>
                 <div class="big-line">About the product</div>
             </div>
             <div class="clips">
@@ -336,6 +335,26 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
-    
+    <script>
+function setLineWidthToNameWidth(nameId, lineId) {
+  var nameElem = document.getElementById(nameId);
+  var lineElem = document.getElementById(lineId);
+  if (nameElem && lineElem) {
+    var width = nameElem.offsetWidth;
+    lineElem.style.width = width + 'px';
+  }
+}
+function updateLinesOnResize() {
+  if (window.innerWidth <= 768) {
+    setLineWidthToNameWidth('hairclip-name', 'hairclip-line');
+    setLineWidthToNameWidth('cable-name', 'cable-line');
+  } else {
+    document.getElementById('hairclip-line').style.width = '';
+    document.getElementById('cable-line').style.width = '';
+  }
+}
+window.addEventListener('resize', updateLinesOnResize);
+window.addEventListener('DOMContentLoaded', updateLinesOnResize);
+</script>
 </body>
 </html>

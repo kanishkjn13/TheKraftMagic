@@ -134,12 +134,18 @@
         </div>
 
         <div class="action-buttons">
-            <button class="btn btn-primary" onclick="clearCartAndContinueShopping()">Continue Shopping</button>
+            <button class="btn btn-primary" onclick="window.location.href='index.html'">Continue Shopping</button>
             <button class="btn btn-secondary" onclick="window.print()">Print Receipt</button>
         </div>
     </div>
 
-    <!-- EmailJS Library -->
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init('Sa7zOQZVHDuADGdUI');
+        })();
+    </script>
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -266,42 +272,44 @@
                 const totals = JSON.parse(localStorage.getItem('orderTotals')) || {};
                 const address = JSON.parse(localStorage.getItem('shippingAddress')) || {};
                 const paymentMethod = localStorage.getItem('paymentMethod') || 'Not specified';
-                const user = getCurrentUser();
+                const user = getCurrentUser && getCurrentUser();
                 const orderNumber = localStorage.getItem('lastOrderNumber') || 'Unknown';
-                
+
                 // Prepare order data for email
                 const orderData = {
-                    orderNumber: orderNumber,
-                    customerName: user ? user.name : address.fullName || 'Unknown',
-                    customerEmail: user ? user.email : address.email || 'Unknown',
-                    orderDate: new Date().toLocaleString('en-IN'),
-                    items: cart,
-                    totals: {
-                        subtotal: totals.subtotal || 0,
-                        shipping: totals.shipping || 0,
-                        tax: totals.tax || 0,
-                        grandTotal: totals.grandTotal || 0
-                    },
-                    shippingAddress: address,
-                    paymentMethod: getPaymentMethodText(paymentMethod)
+                    order_number: orderNumber,
+                    customer_name: user ? user.name : address.fullName || 'Unknown',
+                    customer_email: user ? user.email : address.email || 'Unknown',
+                    order_date: new Date().toLocaleString('en-IN'),
+                    items: cart.map(item => `${item.name} (Size: ${item.size}, Qty: ${item.quantity})`).join(', '),
+                    subtotal: totals.subtotal || 0,
+                    shipping: totals.shipping || 0,
+                    tax: totals.tax || 0,
+                    grand_total: totals.grandTotal || 0,
+                    shipping_address: `${address.fullName || ''}, ${address.address1 || ''}, ${address.address2 || ''}, ${address.city || ''}, ${address.state || ''}, ${address.pincode || ''}`,
+                    payment_method: getPaymentMethodText(paymentMethod),
+                    phone: address.phone || 'N/A'
                 };
-                
+
                 // Add COD charges if applicable
                 if (paymentMethod === 'cod') {
-                    orderData.totals.grandTotal += 25;
+                    orderData.grand_total += 25;
                 }
+
+                // Send email using EmailJS
+                const serviceID = 'service_ug4iixh';
+                const templateID = 'template_3t3y5eu';
+                const templateParams = {
+                    ...orderData,
+                    to_email: 'kanishkjn13.work@gmail.com'
+                };
                 
-                // Send email notification
-                console.log('Sending order confirmation email...');
-                const result = await handleOrderConfirmationEmail(orderData);
-                
-                if (result.success) {
-                    console.log('Order confirmation email sent successfully');
-                    alert('Order confirmation email sent successfully to ' + orderData.customerEmail);
-                } else {
-                    console.log('Email service not configured, using fallback method');
-                    alert('Order confirmed! Email notification may have failed, but your order is processed.');
-                }
+                await emailjs.send(serviceID, templateID, templateParams)
+                    .then(function(response) {
+                        console.log('Order notification email sent!', response.status, response.text);
+                    }, function(error) {
+                        console.error('FAILED to send order notification email:', error);
+                    });
             } catch (error) {
                 console.error('Error sending order notification:', error);
             }
