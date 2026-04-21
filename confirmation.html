@@ -4,22 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation - The Kraft Magic</title>
-    <link rel="stylesheet" href="main.css">
-   <link rel="stylesheet" href="confirmation.css">
+    <link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="css/confirmation.css">
 </head>
 <body>
     <header>
         <div class="main-box">
-            <div class="box1"></div>
-            <div class="center-logo">
-                <div class="logo-circle"></div>
-            </div>
-            <div class="main">
-                <div class="bg-box"></div>
-                <nav style="background-color:none;"></nav>
-                <div class="panel">
-                    <div class="account">
-                       
+            <div class="box1">
+                <div class="account">
+                    <div class="account-right">
                         <div class="acc" onclick="window.location.href='account.html'">
                             <button> Sign up </button>
                         </div>
@@ -28,6 +21,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="center-logo">
+                <div class="logo-circle"></div>
+            </div>
+            <div class="main">
+                <div class="bg-box"></div>
+                <nav style="background-color:none;"></nav>
                 <h1 class="heading"> The Kraft Magic </h1>
                 <div class="tagline"> &#183; Shaping what you dreamt of &#183;</div>
             </div>
@@ -139,6 +139,70 @@
         </div>
     </div>
 
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Company & Newsletter -->
+                <div class="footer-section">
+                    <h3>The Kraft Magic</h3>
+                    <p>Crafting unique accessories that blend traditional elegance with modern functionality. Every piece tells a story of passion and precision.</p>
+                    <div class="newsletter-wrapper">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                            <input type="email" placeholder="Your Email Address" required>
+                            <button type="submit">Join</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Our Craft</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="profile.html">My Account</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shop Collection -->
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="index.html#hairclips">Elegant Hairclips</a></li>
+                        <li><a href="index.html#cables">Premium Cables</a></li>
+                        <li><a href="#">Custom Creations</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social & Help -->
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    
+                    <ul style="margin-top: 25px;">
+                        <li><a href="mailto:info@thekraftmagic.com">📧 info@thekraftmagic.com</a></li>
+                        <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <span class="payment-tag">Secure Payments:</span>
+                    <span class="payment-icon">UPI</span>
+                    <span class="payment-icon">VISA</span>
+                    <span class="payment-icon">MASTERCARD</span>
+                    <span class="payment-icon">COD</span>
+                </div>
+                <p>&copy; 2024 The Kraft Magic. All magic handcrafted with love. ✨</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
@@ -146,7 +210,7 @@
             emailjs.init('Sa7zOQZVHDuADGdUI');
         })();
     </script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             generateOrderNumber();

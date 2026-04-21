@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - The Kraft Magic</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <header>
+        <div class="main-box">
+            <div class="box1">
+                <div class="account">
+                    <div class="account-right">
+                        <div class="acc" onclick="window.location.href='profile.html'">
+                            <button id="profile-name-btn"> Profile </button>
+                        </div>
+                        <div class="acc" onclick="logout()">
+                            <button id="logout-btn"> Logout </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-logo">
+                <div class="logo-circle"></div>
+            </div>
+            <div class="main">
+                <div class="bg-box"></div>
+                <nav style="background-color:none;"></nav>
+                <h1 class="heading"> The Kraft Magic </h1>
+                <div class="tagline"> &#183; Shaping what you dreamt of &#183;</div>
+            </div>
+        </div>
+        <div class="bg-info">
+            <div class="info">
+                <h3 class="info-boxes" onclick="window.location.href='index.html'"> Home </h3>
+                <h3 class="info-boxes" onclick="window.location.href='about.html'"> About </h3>
+                <h3 class="info-boxes" onclick="window.location.href='contact.html'"> Contact Us</h3>
+                <div class="acc" onclick="window.location.href='cart.html'">
+                    <button id="cart-btn"> My Cart (<span id="header-cart-count">0</span>) </button>
+                </div>
+            </div>
+        </div>
+        <div class="line-vertical"></div>
+    </header>
+
+    <div class="profile-container">
+        <aside class="profile-sidebar">
+            <div class="user-avatar-section">
+                <div class="avatar-circle">
+                    <span id="user-initials">U</span>
+                </div>
+                <h2 id="sidebar-user-name">User Name</h2>
+                <p id="sidebar-user-email">user@example.com</p>
+            </div>
+            <nav class="profile-nav">
+                <button class="nav-item active" onclick="showTab('overview')">Profile Overview</button>
+                <button class="nav-item" onclick="showTab('orders')">My Orders</button>
+                <button class="nav-item" onclick="showTab('addresses')">Addresses</button>
+                <button class="nav-item" onclick="showTab('settings')">Settings</button>
+            </nav>
+        </aside>
+
+        <main class="profile-content">
+            <!-- Profile Overview Section -->
+            <section id="overview" class="tab-content active">
+                <div class="section-header">
+                    <h3>Profile Overview</h3>
+                    <button class="edit-btn" onclick="showTab('settings')">Edit Profile</button>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <label>Full Name</label>
+                        <p id="profile-full-name">N/A</p>
+                    </div>
+                    <div class="info-card">
+                        <label>Email Address</label>
+                        <p id="profile-email">N/A</p>
+                    </div>
+                    <div class="info-card">
+                        <label>Member Since</label>
+                        <p>April 2024</p>
+                    </div>
+                    <div class="info-card">
+                        <label>Total Orders</label>
+                        <p id="profile-order-count">0</p>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h4>Recent Activity</h4>
+                    <div id="activity-list">
+                        <p class="empty-msg">No recent activity found.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="tab-content">
+                <div class="section-header">
+                    <h3>My Orders</h3>
+                </div>
+                <div id="orders-list">
+                    <div class="empty-state">
+                        <p>You haven't placed any orders yet.</p>
+                        <button class="shop-btn" onclick="window.location.href='index.html'">Start Shopping</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Addresses Section -->
+            <section id="addresses" class="tab-content">
+                <div class="section-header">
+                    <h3>My Addresses</h3>
+                    <button class="add-btn" onclick="window.location.href='address.html'">Add New</button>
+                </div>
+                <div id="addresses-list">
+                    <div class="address-card">
+                        <div class="address-type">Default Shipping</div>
+                        <div id="default-address-content">
+                            <p class="empty-msg">No address saved yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="tab-content">
+                <div class="section-header">
+                    <h3>Settings</h3>
+                </div>
+                <form id="settings-form" onsubmit="saveSettings(event)">
+                    <div class="form-group">
+                        <label>Update Password</label>
+                        <input type="password" placeholder="New Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Communication Preferences</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" checked> Email notifications
+                            <input type="checkbox" checked> Order updates
+                        </div>
+                    </div>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Company & Newsletter -->
+                <div class="footer-section">
+                    <h3>The Kraft Magic</h3>
+                    <p>Crafting unique accessories that blend traditional elegance with modern functionality. Every piece tells a story of passion and precision.</p>
+                    <div class="newsletter-wrapper">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                            <input type="email" placeholder="Your Email Address" required>
+                            <button type="submit">Join</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Our Craft</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="profile.html">My Account</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shop Collection -->
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="index.html#hairclips">Elegant Hairclips</a></li>
+                        <li><a href="index.html#cables">Premium Cables</a></li>
+                        <li><a href="#">Custom Creations</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social & Help -->
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    
+                    <ul style="margin-top: 25px;">
+                        <li><a href="mailto:info@thekraftmagic.com">📧 info@thekraftmagic.com</a></li>
+                        <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <span class="payment-tag">Secure Payments:</span>
+                    <span class="payment-icon">UPI</span>
+                    <span class="payment-icon">VISA</span>
+                    <span class="payment-icon">MASTERCARD</span>
+                    <span class="payment-icon">COD</span>
+                </div>
+                <p>&copy; 2024 The Kraft Magic. All magic handcrafted with love. ✨</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isLoggedIn()) {
+                window.location.href = 'account.html';
+                return;
+            }
+            loadUserData();
+            loadOrderHistory();
+            loadAddressData();
+        });
+
+        function loadUserData() {
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('profile-name-btn').textContent = user.name;
+                document.getElementById('sidebar-user-name').textContent = user.name;
+                document.getElementById('sidebar-user-email').textContent = user.email;
+                document.getElementById('profile-full-name').textContent = user.name;
+                document.getElementById('profile-email').textContent = user.email;
+                document.getElementById('user-initials').textContent = user.name.charAt(0).toUpperCase();
+            }
+        }
+
+        function loadOrderHistory() {
+            const lastOrderNumber = localStorage.getItem('lastOrderNumber');
+            const ordersList = document.getElementById('orders-list');
+            const orderCount = document.getElementById('profile-order-count');
+            
+            if (lastOrderNumber) {
+                orderCount.textContent = '1';
+                ordersList.innerHTML = `
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-id">#${lastOrderNumber}</span>
+                            <span class="order-status processing">Processing</span>
+                        </div>
+                        <div class="order-info">
+                            <p>Placed on: ${new Date().toLocaleDateString()}</p>
+                            <p>Estimated Delivery: 3-5 business days</p>
+                        </div>
+                        <button class="track-btn">View Details</button>
+                    </div>
+                `;
+            }
+        }
+
+        function loadAddressData() {
+            const address = JSON.parse(localStorage.getItem('shippingAddress'));
+            const container = document.getElementById('default-address-content');
+            if (address) {
+                container.innerHTML = `
+                    <p><strong>${address.fullName}</strong></p>
+                    <p>${address.address1}</p>
+                    <p>${address.city}, ${address.state} ${address.pincode}</p>
+                    <p>Phone: ${address.phone}</p>
+                `;
+            }
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function saveSettings(event) {
+            event.preventDefault();
+            alert('Settings saved successfully!');
+        }
+    </script>
+</body>
+</html>

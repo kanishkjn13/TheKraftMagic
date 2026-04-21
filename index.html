@@ -5,33 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Kraft Magic - Shaping what you dreamt of</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/loading.css">
     
 </head>
 
 <body>
+    <!-- Skeleton Loading Screen -->
+    <div id="page-loader">
+        <div class="skeleton-header">
+            <div class="skeleton skeleton-logo"></div>
+            <div class="loading-text">Handcrafting Magic...</div>
+        </div>
+        <div class="skeleton-nav"></div>
+        <div class="skeleton skeleton-hero"></div>
+        <div class="skeleton-section-title skeleton"></div>
+        <div class="skeleton-card-container">
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card-img"></div>
+                <div class="skeleton-card-text">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line skeleton-line-short"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card-img"></div>
+                <div class="skeleton-card-text">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line skeleton-line-short"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card-img"></div>
+                <div class="skeleton-card-text">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line skeleton-line-short"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card-img"></div>
+                <div class="skeleton-card-text">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line skeleton-line-short"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Header Section -->
     <header>
         <div class="main-box">
-            <div class="box1"></div>
+            <div class="box1">
+                <div class="account">
+                    <div class="account-right">
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Sign up </button>
+                        </div>
+                        <div class="acc" onclick="window.location.href='account.html'">
+                            <button> Log in </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="main">
                 <div class="center-logo">
                     <div class="logo-circle"></div>
                 </div>
                 <div class="bg-box"></div>
                 <nav style="background-color:none;"></nav>
-                <div class="panel">
-                    <div class="account">
-                        <div class="account-right">
-                            <div class="acc" onclick="window.location.href='account.html'">
-                                <button> Sign up </button>
-                            </div>
-                            <div class="acc" onclick="window.location.href='account.html'">
-                                <button> Log in </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <h1 class="heading">The Kraft Magic</h1>
                 <div class="tagline">&#183; Shaping what you dreamt of &#183;</div>
@@ -66,7 +106,7 @@
             </div>
             <div class="clips">
                 <div class="card">
-                    <img src="c8.jpeg" alt="Product Image">
+                    <img src="assets/c8.jpeg" alt="Product Image">
                     <div class="card-info">
                          <h3>Elegant Hairclip</h3>
                         <div class="size">
@@ -76,11 +116,11 @@
                             <button class="size-btn" onclick="showPrice('L', 0)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Elegant Hairclip', 'c8.jpeg', 0)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Elegant Hairclip', 'assets/c8.jpeg', 0)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c1.jpeg" alt="Product Image">
+                    <img src="assets/c1.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Classic Hairclip</h3>
                         <div class="size">
@@ -90,11 +130,11 @@
                             <button class="size-btn" onclick="showPrice('L', 1)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Classic Hairclip', 'c1.jpeg', 1)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Classic Hairclip', 'assets/c1.jpeg', 1)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c9.jpeg" alt="Product Image">
+                    <img src="assets/c9.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Premium Hairclip</h3>
                         <div class="size">
@@ -104,11 +144,11 @@
                             <button class="size-btn" onclick="showPrice('L', 2)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Premium Hairclip', 'c9.jpeg', 2)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Premium Hairclip', 'assets/c9.jpeg', 2)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c2.jpeg" alt="Product Image">
+                    <img src="assets/c2.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Vintage Hairclip</h3>
                         <div class="size">
@@ -118,11 +158,11 @@
                             <button class="size-btn" onclick="showPrice('L', 3)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Vintage Hairclip', 'c2.jpeg', 3)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Vintage Hairclip', 'assets/c2.jpeg', 3)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c7.jpeg" alt="Product Image">
+                    <img src="assets/c7.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Modern Hairclip</h3>
                         <div class="size">
@@ -132,11 +172,11 @@
                             <button class="size-btn" onclick="showPrice('L', 4)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Modern Hairclip', 'c7.jpeg', 4)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Modern Hairclip', 'assets/c7.jpeg', 4)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c4.jpeg" alt="Product Image">
+                    <img src="assets/c4.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Deluxe Hairclip</h3>
                         <div class="size">
@@ -146,11 +186,11 @@
                             <button class="size-btn" onclick="showPrice('L', 5)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Deluxe Hairclip', 'c4.jpeg', 5)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Deluxe Hairclip', 'assets/c4.jpeg', 5)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c6.jpeg" alt="Product Image">
+                    <img src="assets/c6.jpeg" alt="Product Image">
                     <div class="card-info">
                          <h3>Sparkle Hairclip</h3>
                         <div class="size">
@@ -160,11 +200,11 @@
                             <button class="size-btn" onclick="showPrice('L', 6)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Sparkle Hairclip', 'c6.jpeg', 6)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Sparkle Hairclip', 'assets/c6.jpeg', 6)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c5.jpeg" alt="Product Image">
+                    <img src="assets/c5.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Floral Hairclip</h3>
                         <div class="size">
@@ -174,11 +214,11 @@
                             <button class="size-btn" onclick="showPrice('L', 7)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Floral Hairclip', 'c5.jpeg', 7)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Floral Hairclip', 'assets/c5.jpeg', 7)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="c3.jpeg" alt="Product Image">
+                    <img src="assets/c3.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Crystal Hairclip</h3>
                         <div class="size">
@@ -188,7 +228,7 @@
                             <button class="size-btn" onclick="showPrice('L', 8)">L</button>
                         </div>
                         <div class="price-display">Select a size to see the price</div>
-                        <button class="buy-btn" onclick="addToCart('Crystal Hairclip', 'c3.jpeg', 8)">Add to cart</button>
+                        <button class="buy-btn" onclick="addToCart('Crystal Hairclip', 'assets/c3.jpeg', 8)">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -205,59 +245,43 @@
             </div>
             <div class="clips">
                 <div class="card">
-                    <img src="ca1.jpeg" alt="Product Image">
+                    <img src="assets/ca1.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>USB-C Cable</h3>
                         <p>Price: ₹150</p>
-                        <button class="buy-btn" onclick="addCableToCart('USB-C Cable', 'ca1.jpeg', 150)">Add to cart</button>
+                        <button class="buy-btn" onclick="addCableToCart('USB-C Cable', 'assets/ca1.jpeg', 150)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="ca2.jpeg" alt="Product Image">
+                    <img src="assets/ca2.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Lightning Cable</h3>
                         <p>Price: ₹180</p>
-                        <button class="buy-btn" onclick="addCableToCart('Lightning Cable', 'ca2.jpeg', 180)">Add to cart</button>
+                        <button class="buy-btn" onclick="addCableToCart('Lightning Cable', 'assets/ca2.jpeg', 180)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="ca4.jpeg" alt="Product Image">
+                    <img src="assets/ca4.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>Micro USB Cable</h3>
                         <p>Price: ₹120</p>
-                        <button class="buy-btn" onclick="addCableToCart('Micro USB Cable', 'ca4.jpeg', 120)">Add to cart</button>
+                        <button class="buy-btn" onclick="addCableToCart('Micro USB Cable', 'assets/ca4.jpeg', 120)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="ca3.jpeg" alt="Product Image">
+                    <img src="assets/ca3.jpeg" alt="Product Image">
                     <div class="card-info">
                         <h3>HDMI Cable</h3>
                         <p>Price: ₹250</p>
-                        <button class="buy-btn" onclick="addCableToCart('HDMI Cable', 'ca3.jpeg', 250)">Add to cart</button>
+                        <button class="buy-btn" onclick="addCableToCart('HDMI Cable', 'assets/ca3.jpeg', 250)">Add to cart</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="b1.jpg" alt="Product Image">
-                    <div class="card-info">
-                        <h3>Ethernet Cable</h3>
-                        <p>Price: ₹200</p>
-                        <button class="buy-btn" onclick="addCableToCart('Ethernet Cable', 'b1.jpg', 200)">Add to cart</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="b1.jpg" alt="Product Image">
-                    <div class="card-info">
-                        <h3>Audio Cable</h3>
-                        <p>Price: ₹100</p>
-                        <button class="buy-btn" onclick="addCableToCart('Audio Cable', 'b1.jpg', 100)">Add to cart</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="ca8.png" alt="Product Image">
+                    <img src="assets/ca8.png" alt="Product Image">
                     <div class="card-info">
                         <h3>Power Cable</h3>
                         <p>Price: ₹300</p>
-                        <button class="buy-btn" onclick="addCableToCart('Power Cable', 'ca8.png', 300)">Add to cart</button>
+                        <button class="buy-btn" onclick="addCableToCart('Power Cable', 'assets/ca8.png', 300)">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -268,16 +292,16 @@
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                
-                <!-- Company Info -->
+                <!-- Company & Newsletter -->
                 <div class="footer-section">
                     <h3>The Kraft Magic</h3>
-                    <p>Crafting beautiful accessories that blend elegance with functionality. Your style, our passion.</p>
-                    <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">Email</a>
+                    <p>Crafting unique accessories that blend traditional elegance with modern functionality. Every piece tells a story of passion and precision.</p>
+                    <div class="newsletter-wrapper">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                            <input type="email" placeholder="Your Email Address" required>
+                            <button type="submit">Join</button>
+                        </form>
                     </div>
                 </div>
 
@@ -286,55 +310,51 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#" onclick="checkCartAccess()">My Cart</a></li>
+                        <li><a href="about.html">About Our Craft</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="profile.html">My Account</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
                     </ul>
                 </div>
 
-                <!-- Products -->
+                <!-- Shop Collection -->
                 <div class="footer-section">
-                    <h4>Our Products</h4>
+                    <h4>Collections</h4>
                     <ul>
-                        <li><a href="#hairclips">✨ Hairclips</a></li>
-                        <li><a href="#cables">� Cables</a></li>
-                        <li><a href="#">🎨 Custom Orders</a></li>
-                        <li><a href="#">🎁 Gift Cards</a></li>
+                        <li><a href="#hairclips">Elegant Hairclips</a></li>
+                        <li><a href="#cables">Premium Cables</a></li>
+                        <li><a href="#">Custom Creations</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
                     </ul>
                 </div>
 
-                <!-- Customer Service -->
+                <!-- Social & Help -->
                 <div class="footer-section">
-                    <h4>Customer Service</h4>
-                    <ul>
-                        <li><a href="#">Support: Mon-Sat, 9 AM - 7 PM</a></li>
-                        <li><a href="#">Free Shipping on orders ₹500+</a></li>
-                        <li><a href="#">30-Day Return Policy</a></li>
-                        <li><a href="#">Track Your Order</a></li>
-                        <li><a href="#">Size Guide</a></li>
+                    <h4>Connect With Us</h4>
+                    
+                    <ul style="margin-top: 25px;">
+                        <li><a href="mailto:info@thekraftmagic.com">📧 info@thekraftmagic.com</a></li>
+                        <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <div>
-                    <p>&copy; 2024 The Kraft Magic. All rights reserved.</p>
-                    <div class="payment-methods">
-                        <span>💳 We Accept: </span>
-                        <span>💰 Cash on Delivery</span>
-                        <span>🏦 UPI</span>
-                        <span>💳 Cards</span>
-                    </div>
+                <div class="payment-methods">
+                    <span class="payment-tag">Secure Payments:</span>
+                    <span class="payment-icon">UPI</span>
+                    <span class="payment-icon">VISA</span>
+                    <span class="payment-icon">MASTERCARD</span>
+                    <span class="payment-icon">COD</span>
                 </div>
+                <p>&copy; 2024 The Kraft Magic. All magic handcrafted with love. ✨</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script>
 function setLineWidthToNameWidth(nameId, lineId) {
   var nameElem = document.getElementById(nameId);

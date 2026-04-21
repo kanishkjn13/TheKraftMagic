@@ -1,0 +1,126 @@
+.skeleton {
+    background: linear-gradient(90deg, #e6e2d3 25%, #d8d3c5 50%, #e6e2d3 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Page Loader Overlay */
+#page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: beige;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+#page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Skeleton Layout for Index Page */
+.skeleton-header {
+    height: 140px;
+    width: 100%;
+    background: #fdfaf0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid #847f61;
+}
+
+.skeleton-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #847f61;
+}
+
+.skeleton-nav {
+    height: 50px;
+    width: 100%;
+    background: #847f61;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.loading-text {
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #847f61;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.skeleton-hero {
+    height: 500px;
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.skeleton-section-title {
+    width: 300px;
+    height: 40px;
+    margin: 40px 20px;
+}
+
+.skeleton-card-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.skeleton-card {
+    width: 275px;
+    height: 375px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.skeleton-card-img {
+    height: 250px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+.skeleton-card-text {
+    padding: 20px;
+}
+
+.skeleton-line {
+    height: 15px;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.skeleton-line-short {
+    width: 40%;
+}

@@ -63,7 +63,7 @@ function signup(event) {
 
   // Redirect to index.html after 1 second
   setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "profile.html";
   }, 1000);
   
   return false;
@@ -107,7 +107,7 @@ function login(event) {
 
     // Redirect to index.html after 1 second
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = "profile.html";
     }, 1000);
   } else {
     document.getElementById("message").style.color = "red";

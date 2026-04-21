@@ -272,11 +272,11 @@ function updateHeaderUI() {
             // Update UI to show user is logged in
             if (signupBtn) {
                 signupBtn.textContent = `Hi, ${user.name}`;
-                signupBtn.style.cursor = 'default';
-                signupBtn.parentElement.onclick = null;
+                signupBtn.style.cursor = 'pointer';
+                signupBtn.parentElement.onclick = () => window.location.href = 'profile.html';
             }
             if (loginBtn) {
-                loginBtn.textContent = '🚪 Logout';
+                loginBtn.textContent = 'Logout';
                 loginBtn.style.cursor = 'pointer';
                 // Remove any existing event listeners and add new one
                 loginBtn.parentElement.onclick = null;
@@ -289,12 +289,12 @@ function updateHeaderUI() {
         } else {
             // Show default login/signup buttons
             if (signupBtn) {
-                signupBtn.textContent = '📝 Sign up';
+                signupBtn.textContent = 'Sign up';
                 signupBtn.style.cursor = 'pointer';
                 signupBtn.parentElement.onclick = function() { window.location.href = 'account.html'; };
             }
             if (loginBtn) {
-                loginBtn.textContent = '🔑 Log in';
+                loginBtn.textContent = 'Log in';
                 loginBtn.style.cursor = 'pointer';
                 loginBtn.parentElement.onclick = function() { window.location.href = 'account.html'; };
             }
@@ -313,4 +313,12 @@ function updateHeaderUI() {
 document.addEventListener('DOMContentLoaded', function() {
     updateCartDisplay();
     updateHeaderUI();
+    
+    // Hide page loader with a slight delay for better UX
+    setTimeout(function() {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+    }, 1200); // 1.2 second delay to show off the skeleton magic
 });
