@@ -1,13 +1,17 @@
 function showLogin() {
-  document.getElementById("loginForm").style.display = "block";
-  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("loginSection").style.display = "block";
+  document.getElementById("signupSection").style.display = "none";
+  document.getElementById("toggleLogin").classList.add("active");
+  document.getElementById("toggleSignup").classList.remove("active");
   document.getElementById("message").innerText = "";
   document.getElementById("message").style.color = "red";
 }
 
 function showSignup() {
-  document.getElementById("signupForm").style.display = "block";
-  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupSection").style.display = "block";
+  document.getElementById("loginSection").style.display = "none";
+  document.getElementById("toggleSignup").classList.add("active");
+  document.getElementById("toggleLogin").classList.remove("active");
   document.getElementById("message").innerText = "";
   document.getElementById("message").style.color = "red";
 }
